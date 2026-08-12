@@ -144,6 +144,11 @@ section.divide{margin-top:8px;}
 .pro .ico{color:#3E7A4D; font-weight:700;}
 .con .ico{color:#B54A3A; font-weight:700;}
 .card .base{font-size:11.5px; color:var(--ink-faint); font-family:'IBM Plex Mono',monospace; border-top:1px solid var(--line); padding-top:10px; margin-top:6px;}
+.vs-note{margin-top:12px; padding-top:12px; border-top:1px dashed var(--line); font-size:12.5px; color:var(--ink-soft); font-style:italic; line-height:1.5;}
+.vs-note strong{color:var(--plum-deep); font-style:normal; font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.03em; display:block; margin-bottom:4px;}
+.key-message{background:var(--plum-deep); color:#fff; border-radius:12px; padding:16px 22px; font-size:14.5px; font-weight:600; margin-bottom:32px; display:flex; align-items:center; gap:12px;}
+.key-message .icon{width:18px; height:18px; stroke:var(--gold-soft); flex:none;}
+.flow-caption{text-align:center; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--plum); font-weight:600; margin:-16px 0 26px; letter-spacing:.01em;}
 details.more{margin-top:12px;}
 details.more summary{cursor:pointer; font-size:13px; color:var(--plum); font-weight:600; list-style:none; display:flex; align-items:center; gap:6px;}
 details.more summary::-webkit-details-marker{display:none;}
@@ -202,6 +207,14 @@ details.more .body{font-size:13.5px; color:var(--ink-soft); padding-top:10px; li
 .risk-box h4{color:#B54A3A; font-size:14px; text-transform:uppercase; letter-spacing:.04em; font-family:'IBM Plex Mono',monospace; margin-bottom:10px; display:flex; align-items:center; gap:8px;}
 .risk-box h4 .icon{width:16px; height:16px; stroke:#B54A3A;}
 .risk-box p{color:var(--ink-soft); font-size:13.5px; margin-bottom:8px;}
+.conclusion-head{margin:38px 0 16px; font-size:13px; font-weight:600; color:var(--plum-deep); text-transform:uppercase; letter-spacing:.04em; font-family:'IBM Plex Mono',monospace;}
+.conclusion-row{display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:18px;}
+.conclusion-badge{background:#fff; border-radius:12px; overflow:hidden; border:1px solid var(--os-border); box-shadow:0 3px 10px rgba(0,0,0,.05);}
+.conclusion-badge .cb-head{padding:10px 10px; color:#fff; font-size:12.5px; font-weight:700; text-align:center;}
+.conclusion-badge .cb-body{padding:12px 10px 14px; font-size:11.5px; color:var(--ink-soft); text-align:center; line-height:1.4;}
+.conclusion-banner{background:var(--plum-deep); color:#fff; border-radius:12px; padding:16px 22px; font-size:14px; font-weight:600; text-align:center;}
+@media (max-width:940px){ .conclusion-row{grid-template-columns:repeat(3,1fr);} }
+@media (max-width:640px){ .conclusion-row{grid-template-columns:1fr 1fr;} }
 
 /* quadro sintese */
 table.qs{width:100%; border-collapse:collapse; font-size:13.5px; margin-top:6px; background:#fff; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line);}
@@ -351,6 +364,7 @@ footer .disclaimer{font-size:12.5px; color:var(--ink-faint); max-width:70ch; mar
           <div class="con"><span class="ico">–</span> Vulnerável a contingenciamento orçamentário</div>
         </div>
         <div class="base">Base legal: CF/88 art. 37 · Lei 14.133/2021 · Lei 11.904/2009</div>
+        <div class="vs-note"><strong>OS vs. Administração Direta</strong>A OS amplia a capacidade de resposta; a Administração Direta maximiza o controle direto, mas exige estrutura pública especializada e ágil.</div>
         <details class="more"><summary>Detalhes técnicos</summary>
           <div class="body">
             Receitas próprias (bilheteria, cessão de espaços) não ficam retidas no museu — vão para a Conta Única do Tesouro e dependem de cota orçamentária. Adotar esse modelo exige decisão explícita de constituir uma unidade administrativa especializada, com autoridade, orçamento e quadro próprios.
@@ -415,10 +429,11 @@ footer .disclaimer{font-size:12.5px; color:var(--ink-faint); max-width:70ch; mar
         <div class="pro-con">
           <div class="pro"><span class="ico">+</span> Ágil para programas específicos — pesquisa, educação, participação social</div>
           <div class="pro"><span class="ico">+</span> Pode coexistir com outro modelo principal</div>
-          <div class="con"><span class="ico">–</span> Não veste bem uma operação museológica contínua e complexa</div>
+          <div class="con"><span class="ico">–</span> Não se adequa bem a uma operação museológica contínua e complexa</div>
           <div class="con"><span class="ico">–</span> Limites para cessão continuada de bens públicos</div>
         </div>
         <div class="base">Base legal: Lei Federal 13.019/2014 (MROSC)</div>
+        <div class="vs-note"><strong>OS vs. MROSC</strong>O MROSC pode ser complementar; a OS apresenta maior aderência como estrutura de gestão integral e continuada.</div>
         <details class="more"><summary>Detalhes técnicos</summary>
           <div class="body">
             Três instrumentos distintos, não intercambiáveis: Termo de Colaboração (iniciativa pública), Termo de Fomento (iniciativa da OSC) e Acordo de Cooperação (sem repasse financeiro). O maior risco é usar o instrumento errado para o objeto.
@@ -431,7 +446,7 @@ footer .disclaimer{font-size:12.5px; color:var(--ink-faint); max-width:70ch; mar
               <div class="cons"><h5>Desvantagens</h5><ul>
                 <li>Dificuldades para cessão continuada de bens públicos</li>
                 <li>Limitações para custeio operacional permanente</li>
-                <li>Não veste bem metas complexas e duradouras</li>
+                <li>Não se adequa bem a metas complexas e duradouras</li>
                 <li>Risco de usar o instrumento errado para o objeto</li>
               </ul></div>
             </div>
@@ -452,6 +467,7 @@ footer .disclaimer{font-size:12.5px; color:var(--ink-faint); max-width:70ch; mar
           <div class="con"><span class="ico">–</span> Regulado por decreto — menor estabilidade que uma lei</div>
         </div>
         <div class="base">Base legal: Decreto Federal 5.151/2004 · Decreto Estadual 58.382/2025</div>
+        <div class="vs-note"><strong>OS vs. Cooperação Internacional</strong>A cooperação internacional é estratégica; a OS é mais aderente à gestão cotidiana e permanente.</div>
         <details class="more"><summary>Detalhes técnicos</summary>
           <div class="body">
             Isoladamente, o acordo não define quem responde pela totalidade das atividades permanentes — isso precisa ser atribuído expressamente à SEDUC/RS ou a outro operador. Maior aderência às etapas de implantação e modernização.
@@ -483,6 +499,13 @@ footer .disclaimer{font-size:12.5px; color:var(--ink-faint); max-width:70ch; mar
         <h2>Por que a Organização Social é a escolha técnica</h2>
         <p class="lede">Como a estrutura funciona na prática — e duas condições que determinam se, de fato, ela entrega o que promete.</p>
       </div>
+
+      <div class="key-message">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 2v6M12 22v-6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg>
+        Mensagem-chave: separar direção estratégica pública de execução operacional especializada.
+      </div>
+
+      <p class="flow-caption">Estado define a política pública → OS executa com autonomia → Estado supervisiona resultados</p>
 
       <div class="diagram">
         <div class="dnode">
@@ -561,6 +584,31 @@ footer .disclaimer{font-size:12.5px; color:var(--ink-faint); max-width:70ch; mar
         <p>O cenário de "patrocinador master" avaliado no Plano-base mostra que depender de uma única empresa privada gera vulnerabilidade financeira e risco de interferência na agenda institucional e curatorial. A diversificação de receitas reduz esse risco, mas exige equipe, governança e regras de integridade próprias.</p>
         <p style="margin-bottom:0;">Despesas essenciais — segurança, manutenção, acessibilidade, equipe mínima — não devem depender de desempenho comercial. O financiamento público de base continua necessário em qualquer cenário de captação privada.</p>
       </div>
+
+      <div class="conclusion-head">Conclusão — por que a OS equilibra execução e interesse público</div>
+      <div class="conclusion-row">
+        <div class="conclusion-badge">
+          <div class="cb-head" style="background:var(--plum)">Continuidade</div>
+          <div class="cb-body">Operação permanente e integrada</div>
+        </div>
+        <div class="conclusion-badge">
+          <div class="cb-head" style="background:var(--canvas)">Agilidade</div>
+          <div class="cb-body">Flexibilidade para pessoas, compras, serviços e tecnologia</div>
+        </div>
+        <div class="conclusion-badge">
+          <div class="cb-head" style="background:#3E7A4D">Sustentabilidade</div>
+          <div class="cb-body">Financiamento público + diversificação de receitas</div>
+        </div>
+        <div class="conclusion-badge">
+          <div class="cb-head" style="background:var(--plum-deep)">Controle público</div>
+          <div class="cb-body">Patrimônio, acervo e direção estratégica permanecem públicos</div>
+        </div>
+        <div class="conclusion-badge">
+          <div class="cb-head" style="background:var(--gold-deep)">Resultados</div>
+          <div class="cb-body">Metas, indicadores, monitoramento e avaliação</div>
+        </div>
+      </div>
+      <div class="conclusion-banner">Condições necessárias para o sucesso do modelo: financiamento previsível + metas claras + estrutura pública robusta de supervisão.</div>
     </div>
   </div>
 </section>
