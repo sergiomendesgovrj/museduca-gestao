@@ -13,6 +13,9 @@
   color-scheme: light only;
   --paper:#F7F4EC;
   --paper-deep:#F1ECDF;
+  --canvas:#0B5394;
+  --canvas-deep:#083F70;
+  --canvas-line:rgba(255,255,255,.06);
   --ink:#221F2E;
   --ink-soft:#5B5570;
   --ink-faint:#8C86A0;
@@ -30,8 +33,8 @@
   --grad: linear-gradient(90deg, var(--plum), var(--gold));
   --verdict-bg:#FBF1DC;
   --verdict-border:#E4C067;
-  --os-bg:#F2EDFA;
-  --os-border:#DED0F0;
+  --os-bg:#E7EFF8;
+  --os-border:#C9DCEF;
   --risk-bg:#FBEAE6;
   --risk-border:#E3B3A8;
   --radius: 16px;
@@ -41,25 +44,27 @@
 html{scroll-behavior:smooth;}
 body{margin:0;}
 .page{
-  background-color:#F7F4EC; color:var(--ink);
+  background-color:var(--canvas); color:var(--ink);
   font-family:'IBM Plex Sans', -apple-system, sans-serif;
   font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;
   min-height:100vh; min-height:100dvh;
   background-image:
-    repeating-linear-gradient(0deg, rgba(75,58,110,.05) 0 1px, transparent 1px 64px),
-    repeating-linear-gradient(90deg, rgba(75,58,110,.05) 0 1px, transparent 1px 64px);
+    repeating-linear-gradient(0deg, var(--canvas-line) 0 1px, transparent 1px 64px),
+    repeating-linear-gradient(90deg, var(--canvas-line) 0 1px, transparent 1px 64px);
 }
 h1,h2,h3,h4{font-family:'Fraunces', Georgia, serif; color:var(--plum-deep); margin:0 0 .4em 0; line-height:1.15; font-weight:600; letter-spacing:-0.01em;}
 p{margin:0 0 1em 0;}
 a{color:var(--plum);}
 .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+#modelos .wrap, #quadro .wrap, #aprofundamento .wrap{background:var(--os-bg); border:1px solid var(--os-border); border-radius:24px; padding:48px 44px; box-shadow:0 24px 60px -24px rgba(0,0,0,.3), 0 2px 8px rgba(0,0,0,.06);}
+footer .wrap{background:var(--os-bg); border:1px solid var(--os-border); border-radius:24px; padding:40px 44px; box-shadow:0 24px 60px -24px rgba(0,0,0,.3), 0 2px 8px rgba(0,0,0,.06);}
 svg{display:block;}
 .icon{width:22px; height:22px; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round;}
 .icon-solid{fill:#fff; stroke:none;}
 
 .topbar{height:6px; background:var(--grad); width:100%;}
 
-nav.exec-nav{position:sticky; top:0; z-index:50; background:rgba(247,244,236,.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+nav.exec-nav{position:sticky; top:0; z-index:50; background:rgba(251,248,242,.97); backdrop-filter:blur(6px); border-bottom:1px solid var(--line); box-shadow:0 2px 16px rgba(0,0,0,.08);}
 nav.exec-nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:10px 28px; gap:16px; flex-wrap:wrap;}
 .nav-brand{font-family:'Fraunces', serif; font-weight:600; font-size:15px; color:var(--plum-deep); display:flex; align-items:center; gap:9px;}
 .nav-brand svg{width:24px; height:24px; flex:none;}
@@ -68,16 +73,18 @@ nav.exec-nav .wrap{display:flex; align-items:center; justify-content:space-betwe
 .nav-links a:hover{color:var(--plum); border-bottom-color:var(--gold);}
 
 /* ---- HERO with blueprint building ---- */
-header.cover{position:relative; padding:64px 0 20px; overflow:hidden;}
-.hero-logo{position:absolute; right:0; top:76px; width:min(220px,32%); opacity:1; pointer-events:none;}
-.hero-logo img{width:100%; height:auto; display:block; filter:drop-shadow(0 4px 14px rgba(75,58,110,.12));}
-.hero-inner{position:relative; z-index:2; max-width:640px;}
+header.cover{position:relative; padding:56px 0 60px; overflow:hidden;}
+.hero-logo{position:absolute; right:28px; top:44px; width:min(190px,28%); opacity:1; pointer-events:none; z-index:3;}
+.hero-logo img{width:100%; height:auto; display:block; filter:drop-shadow(0 6px 18px rgba(0,0,0,.25));}
+.sheet{background:#fff; border-radius:22px; box-shadow:0 24px 60px -24px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.08);}
+.hero-inner{position:relative; z-index:2; max-width:600px; padding:42px 46px;}
 .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold-deep); font-weight:600; display:flex; align-items:center; gap:10px; margin-bottom:18px;}
 .eyebrow::before{content:""; width:26px; height:1px; background:var(--gold-deep);}
 h1.title{font-size:clamp(34px,5.2vw,54px); max-width:13ch;}
 .subtitle{font-size:19px; color:var(--ink-soft); max-width:46ch; margin-top:10px; font-family:'Fraunces',serif; font-style:italic; font-weight:400;}
-.idg-logo{margin-top:32px; display:flex; align-items:center; gap:16px; padding-top:26px; border-top:1px solid var(--line); max-width:640px;}
-.idg-tag{font-family:'Fraunces', serif; font-weight:600; font-style:italic; font-size:14px; color:var(--plum-deep); line-height:1.4;}
+.title-row{display:flex; align-items:center; gap:18px;}
+.title-row h1.title{margin:0;}
+.title-logo{width:56px; height:56px; flex:none;}
 
 /* verdict */
 .verdict{margin:48px 0; border-radius:var(--radius); background:var(--verdict-bg); border:1px solid var(--verdict-border); color:var(--ink); padding:36px 38px; position:relative; overflow:hidden; display:flex; gap:26px; align-items:flex-start;}
@@ -91,8 +98,8 @@ h1.title{font-size:clamp(34px,5.2vw,54px); max-width:13ch;}
 .verdict .who{margin-top:16px; font-size:13px; color:var(--gold-deep); font-family:'IBM Plex Mono',monospace;}
 .verdict .caveat{margin-top:18px; font-size:13px; color:var(--ink-faint); border-top:1px solid var(--verdict-border); padding-top:16px;}
 
-section{padding:56px 0;}
-section.divide{border-top:1px solid var(--line);}
+section{padding:28px 0;}
+section.divide{margin-top:8px;}
 .section-head{margin-bottom:34px; max-width:70ch;}
 .section-head .k{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--plum); font-weight:600; text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; display:block;}
 .section-head h2{font-size:clamp(24px,3vw,30px);}
@@ -143,9 +150,18 @@ details.more summary::-webkit-details-marker{display:none;}
 details.more summary::after{content:"+"; margin-left:auto; font-size:16px; color:var(--gold-deep);}
 details.more[open] summary::after{content:"–";}
 details.more .body{font-size:13.5px; color:var(--ink-soft); padding-top:10px; line-height:1.6;}
+.vd{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:14px;}
+.vd h5{font-size:11px; text-transform:uppercase; letter-spacing:.05em; font-family:'IBM Plex Mono',monospace; margin:0 0 8px;}
+.vd.pros h5{color:#3E7A4D;}
+.vd.cons h5{color:#B54A3A;}
+.vd ul{list-style:none; padding:0; margin:0;}
+.vd li{font-size:12.5px; color:var(--ink-soft); padding:4px 0 4px 15px; position:relative; line-height:1.45;}
+.vd.pros li::before{content:"+"; position:absolute; left:0; color:#3E7A4D; font-weight:700;}
+.vd.cons li::before{content:"–"; position:absolute; left:0; color:#B54A3A; font-weight:700;}
+@media (max-width:520px){ .vd{grid-template-columns:1fr;} }
 
 /* ---- OS DEEP DIVE ---- */
-.os-section{background:var(--os-bg); border:1px solid var(--os-border); color:var(--ink); border-radius:var(--radius); padding:50px 44px; margin-top:6px; position:relative; overflow:hidden;}
+.os-section{background:var(--os-bg); border:1px solid var(--os-border); color:var(--ink); border-radius:var(--radius); padding:50px 44px; margin-top:6px; position:relative; overflow:hidden; box-shadow:0 24px 60px -24px rgba(0,0,0,.3), 0 2px 8px rgba(0,0,0,.06);}
 .os-section::after{content:""; position:absolute; inset:0; background-image:repeating-linear-gradient(0deg, rgba(75,58,110,.035) 0 1px, transparent 1px 40px), repeating-linear-gradient(90deg, rgba(75,58,110,.035) 0 1px, transparent 1px 40px); pointer-events:none;}
 .os-section > *{position:relative; z-index:1;}
 .os-section .section-head .k{color:var(--plum);}
@@ -224,13 +240,15 @@ footer .disclaimer{font-size:12.5px; color:var(--ink-faint); max-width:70ch; mar
   .os-two{grid-template-columns:1fr;}
 
   .os-section{padding:36px 22px;}
-  .hero-logo{position:static; width:52%; max-width:220px; opacity:1; margin:24px auto 0;}
+  .hero-logo{position:static; width:52%; max-width:220px; opacity:1; margin:0 auto 20px;}
   header.cover{padding-bottom:0;}
+  #modelos .wrap, #quadro .wrap, #aprofundamento .wrap, footer .wrap{padding:34px 26px; border-radius:18px;}
+  .hero-inner{padding:32px 28px;}
 }
 @media (max-width:640px){
   .pillars{grid-template-columns:1fr;}
   .legend-grid{grid-template-columns:1fr;}
-
+  .title-logo{width:38px; height:38px;}
   .verdict{flex-direction:column;}
   .diagram{gap:14px;}
   .darrow{transform:rotate(90deg); min-width:auto; margin:6px 0;}
@@ -239,7 +257,8 @@ footer .disclaimer{font-size:12.5px; color:var(--ink-faint); max-width:70ch; mar
   nav.exec-nav{position:static;}
   details:not([open]) .body{display:block !important;}
   .deep-list summary::after{content:"";}
-  .os-section, .verdict{background:var(--plum-deep) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  .page{background:#fff !important; background-image:none !important;}
+  .sheet, #modelos .wrap, #quadro .wrap, #aprofundamento .wrap, footer .wrap, .os-section{box-shadow:none !important; border:1px solid var(--line) !important;}
 }
 </style>
 </head>
@@ -284,13 +303,11 @@ footer .disclaimer{font-size:12.5px; color:var(--ink-faint); max-width:70ch; mar
       <img src="data:image/png;base64,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" alt="IDG — Instituto de Desenvolvimento e Gestão" />
     </div>
 
-    <div class="hero-inner">
+    <div class="hero-inner sheet">
       <span class="eyebrow">IDG → SEDUC/RS · Nota para decisão de governo</span>
-      <h1 class="title">MusEduca</h1>
-      <p class="subtitle">Modelo de Gestão — arranjo jurídico-institucional</p>
-
-      <div class="idg-logo">
-        <svg viewBox="0 0 200 200" width="46" height="46">
+      <div class="title-row">
+        <h1 class="title">MusEduca</h1>
+        <svg class="title-logo" viewBox="0 0 200 200">
           <defs>
             <linearGradient id="lgA-m" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F2C94C"/><stop offset="100%" stop-color="#27AE60"/></linearGradient>
             <linearGradient id="lgB-m" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#7C4DFF"/><stop offset="100%" stop-color="#2E9BB0"/></linearGradient>
@@ -306,8 +323,8 @@ footer .disclaimer{font-size:12.5px; color:var(--ink-faint); max-width:70ch; mar
             <line x1="20" y1="93" x2="185" y2="53" stroke="url(#lgA-m)" stroke-width="16"/>
           </g>
         </svg>
-        <div class="idg-tag">musEduca<br>Museu da Educação para o Amanhã</div>
       </div>
+      <p class="subtitle">Modelo de Gestão — arranjo jurídico-institucional</p>
     </div>
   </div>
 </header>
@@ -335,7 +352,22 @@ footer .disclaimer{font-size:12.5px; color:var(--ink-faint); max-width:70ch; mar
         </div>
         <div class="base">Base legal: CF/88 art. 37 · Lei 14.133/2021 · Lei 11.904/2009</div>
         <details class="more"><summary>Detalhes técnicos</summary>
-          <div class="body">Receitas próprias (bilheteria, cessão de espaços) não ficam retidas no museu — vão para a Conta Única do Tesouro e dependem de cota orçamentária. Adotar esse modelo exige decisão explícita de constituir uma unidade administrativa especializada, com autoridade, orçamento e quadro próprios.</div>
+          <div class="body">
+            Receitas próprias (bilheteria, cessão de espaços) não ficam retidas no museu — vão para a Conta Única do Tesouro e dependem de cota orçamentária. Adotar esse modelo exige decisão explícita de constituir uma unidade administrativa especializada, com autoridade, orçamento e quadro próprios.
+            <div class="vd">
+              <div class="pros"><h5>Vantagens</h5><ul>
+                <li>Controle institucional imediato pela SEDUC/RS</li>
+                <li>Decisões sobre missão, acervo e uso dos espaços na própria estrutura pública</li>
+                <li>Elevado grau de submissão aos controles orçamentários e financeiros do Estado</li>
+              </ul></div>
+              <div class="cons"><h5>Desvantagens</h5><ul>
+                <li>Compras e contratações morosas (rito da Lei 14.133/2021)</li>
+                <li>Rigidez na gestão de pessoas — contratação majoritariamente por concurso</li>
+                <li>Vulnerável a contingenciamento em crises fiscais</li>
+                <li>Baixo incentivo à captação de recursos privados</li>
+              </ul></div>
+            </div>
+          </div>
         </details>
       </div>
 
@@ -354,7 +386,23 @@ footer .disclaimer{font-size:12.5px; color:var(--ink-faint); max-width:70ch; mar
         </div>
         <div class="base">Base legal: Lei Estadual RS 16.451/2024 · CF/88</div>
         <details class="more"><summary>Detalhes técnicos</summary>
-          <div class="body">A flexibilidade não é vantagem automática — depende da qualidade do contrato de gestão e da capacidade da SEDUC/RS de fiscalizar com sistemas próprios de informação. Ver seção dedicada logo abaixo.</div>
+          <div class="body">
+            A flexibilidade não é vantagem automática — depende da qualidade do contrato de gestão e da capacidade da SEDUC/RS de fiscalizar com sistemas próprios de informação. Ver seção dedicada logo abaixo.
+            <div class="vd">
+              <div class="pros"><h5>Vantagens</h5><ul>
+                <li>Regulamento próprio de compras e RH, sem morosidade da Lei de Licitações</li>
+                <li>Alta captação privada (Rouanet, Pró-Cultura RS, patrocínios, doações)</li>
+                <li>Respaldo em lei estadual votada — maior estabilidade que decreto</li>
+                <li>Estado preserva titularidade do acervo e do imóvel</li>
+              </ul></div>
+              <div class="cons"><h5>Desvantagens</h5><ul>
+                <li>Autonomia depende da qualidade do contrato de gestão</li>
+                <li>Exige unidade supervisora qualificada na SEDUC/RS</li>
+                <li>Risco de controle formal/retrospectivo se a fiscalização for fraca</li>
+                <li>Risco de dependência de patrocinador único</li>
+              </ul></div>
+            </div>
+          </div>
         </details>
       </div>
 
@@ -372,7 +420,22 @@ footer .disclaimer{font-size:12.5px; color:var(--ink-faint); max-width:70ch; mar
         </div>
         <div class="base">Base legal: Lei Federal 13.019/2014 (MROSC)</div>
         <details class="more"><summary>Detalhes técnicos</summary>
-          <div class="body">Três instrumentos distintos, não intercambiáveis: Termo de Colaboração (iniciativa pública), Termo de Fomento (iniciativa da OSC) e Acordo de Cooperação (sem repasse financeiro). O maior risco é usar o instrumento errado para o objeto.</div>
+          <div class="body">
+            Três instrumentos distintos, não intercambiáveis: Termo de Colaboração (iniciativa pública), Termo de Fomento (iniciativa da OSC) e Acordo de Cooperação (sem repasse financeiro). O maior risco é usar o instrumento errado para o objeto.
+            <div class="vd">
+              <div class="pros"><h5>Vantagens</h5><ul>
+                <li>Ágil para parcerias pontuais e programáticas</li>
+                <li>Pode coexistir com o modelo principal de gestão</li>
+                <li>Três instrumentos permitem adequação fina ao tipo de projeto</li>
+              </ul></div>
+              <div class="cons"><h5>Desvantagens</h5><ul>
+                <li>Dificuldades para cessão continuada de bens públicos</li>
+                <li>Limitações para custeio operacional permanente</li>
+                <li>Não veste bem metas complexas e duradouras</li>
+                <li>Risco de usar o instrumento errado para o objeto</li>
+              </ul></div>
+            </div>
+          </div>
         </details>
       </div>
 
@@ -390,7 +453,22 @@ footer .disclaimer{font-size:12.5px; color:var(--ink-faint); max-width:70ch; mar
         </div>
         <div class="base">Base legal: Decreto Federal 5.151/2004 · Decreto Estadual 58.382/2025</div>
         <details class="more"><summary>Detalhes técnicos</summary>
-          <div class="body">Isoladamente, o acordo não define quem responde pela totalidade das atividades permanentes — isso precisa ser atribuído expressamente à SEDUC/RS ou a outro operador. Maior aderência às etapas de implantação e modernização.</div>
+          <div class="body">
+            Isoladamente, o acordo não define quem responde pela totalidade das atividades permanentes — isso precisa ser atribuído expressamente à SEDUC/RS ou a outro operador. Maior aderência às etapas de implantação e modernização.
+            <div class="vd">
+              <div class="pros"><h5>Vantagens</h5><ul>
+                <li>Mobiliza especialistas e metodologias internacionais</li>
+                <li>Boa aderência a implantação, transição e modernização institucional</li>
+                <li>Já em curso com a OEI — experiência acumulada na concepção do MusEduca</li>
+              </ul></div>
+              <div class="cons"><h5>Desvantagens</h5><ul>
+                <li>Não resolve a operação cotidiana (pessoal fixo, segurança, manutenção)</li>
+                <li>Regulado por decreto do Executivo — menor estabilidade que uma lei</li>
+                <li>Burocracia de prestação de contas dupla (legislação nacional + regras do organismo)</li>
+                <li>Sustentabilidade depende da absorção de conhecimento pelos quadros permanentes</li>
+              </ul></div>
+            </div>
+          </div>
         </details>
       </div>
     </div>
